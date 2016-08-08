@@ -11,6 +11,7 @@ set -e
 
 for f in $FILES
 do
+  echo $f
   sed -i 's@%API_KEY%@'\""$API_KEY"\"'@; s@%AUTH_DOMAIN%@'\""$AUTH_DOMAIN"\"'@; s@%DATABASE_URL%@'\""$DATABASE_URL"\"'@; s@%STORAGE_BUCKET%@'\""$STORAGE_BUCKET"\"'@' $f
 done
 

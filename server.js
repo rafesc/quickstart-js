@@ -28,6 +28,8 @@ var templates = fs.readdirSync(path.join(__dirname, 'auth'))
   fs.writeFileSync(path.join(dir, fileName), replacedData, 'utf-8');
 });
 
+fs.createReadStream(path.join(__dirname, 'auth', 'main.css')).pipe(fs.createWriteStream(path.join(__dirname, '.tmp', 'main.css')));
+
 app.use(express.static('.tmp'));
 app.use(bp.urlencoded({extended: false}));
 app.use(bp.json());

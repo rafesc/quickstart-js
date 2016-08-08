@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Reading templates..."
+
 API_KEY=$API_KEY
 AUTH_DOMAIN=$AUTH_DOMAIN
 DATABASE_URL=$DATABASE_URL

@@ -6,6 +6,8 @@ var express = require ('express'),
 var port = process.env.PORT || 3000,
     app = express();
 
+var dir = path.join(__dirname, '.tmp');
+
 var templates = fs.readdirSync(path.join(__dirname, 'auth'))
 .filter((template) => {
   return template.endsWith('.html');
@@ -19,15 +21,19 @@ var templates = fs.readdirSync(path.join(__dirname, 'auth'))
   .replace('%DATABASE_URL%', JSON.stringify(process.env.DATABASE_URL))
   .replace('%STORAGE_BUCKET%', JSON.stringify(process.env.STORAGE_BUCKET));
 
-  fs.writeFileSync(completePath, replacedData, 'utf-8');
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+  }
+
+  fs.writeFileSync(path.join(dir, fileName), replacedData, 'utf-8');
 });
 
-app.use(express.static('auth'));
+app.use(express.static('.tmp'));
 app.use(bp.urlencoded({extended: false}));
 app.use(bp.json());
 
 app.get('/', function(req, res) {
-    res.send('auth-temp');
+    res.send('.tmp');
 });
 
 app.listen(port, function(){

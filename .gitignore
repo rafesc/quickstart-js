@@ -6,3 +6,4 @@
 .idea
 env.list
 npm-debug.log
+.tmp

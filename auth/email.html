@@ -181,6 +181,7 @@ limitations under the License.
           var uid = user.uid;
           var refreshToken = user.refreshToken;
           var providerData = user.providerData;
+          var idToken = user.bd;
           // [START_EXCLUDE silent]
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
           document.getElementById('quickstart-sign-in').textContent = 'Sign out';
@@ -192,7 +193,8 @@ limitations under the License.
             isAnonymous: isAnonymous,
             uid: uid,
             refreshToken: refreshToken,
-            providerData: providerData
+            providerData: providerData,
+            idToken: idToken
           }, null, '  ');
           if (!emailVerified) {
             document.getElementById('quickstart-verify-email').disabled = false;
